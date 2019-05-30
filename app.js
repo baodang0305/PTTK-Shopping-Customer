@@ -4,13 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./controller/index');
+var productAllRouter = require('./controller/product/product-all');
+var productDetailRouter = require('./controller/product/product-detail');
+var cartRouter = require('./controller/cart');
+var customerRouter = require('./controller/customer');
+
+//var usersRouter = require('./routes/users');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/product'), path.join(__dirname, 'views/cart'), path.join(__dirname, 'views/customer')]);
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -18,9 +23,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/images')));
+app.use(express.static(path.join(__dirname, 'public/javascripts')));
+app.use(express.static(path.join(__dirname, 'public/stylesheets')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', productAllRouter);
+app.use('/', productDetailRouter);
+app.use('/', cartRouter);
+app.use('/', customerRouter);
+//app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

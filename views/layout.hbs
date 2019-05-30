@@ -1,10 +1,137 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {{{body}}}
-  </body>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-responsive.min.css" rel="stylesheet">
+
+    <link href="bootstrappage.css" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link href="flexslider.css" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="superfish.js"></script>
+    <script src="jquery.scrolltotop.js"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+                <form method="POST" class="search_form">
+                    <input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+                </form>
+            </div>
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="/cart">Your Cart</a></li>
+                        <li><a href="/checkout">Checkout</a></li>
+                        <li><a href="/register">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper" class="container">
+        <section class="navbar main-menu">
+            <div class="navbar-inner main-menu">
+                <a href="/" class="logo pull-left"><img src="logo.png" class="site_logo" alt=""></a>
+                <nav id="menu" class="pull-right">
+                    <ul>
+                        <li>
+                            <a href="/product-all">Woman</a>
+                            <ul>
+                                <li><a href="/product-all">Lacinia nibh</a></li>
+                                <li><a href="/product-all">Eget molestie</a></li>
+                                <li><a href="/product-all">Varius purus</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/product-all">Man</a></li>
+                        <li>
+                            <a href="/product-all">Sport</a>
+                            <ul>
+                                <li><a href="/product-all">Gifts and Tech</a></li>
+                                <li><a href="/product-all">Ties and Hats</a></li>
+                                <li><a href="/product-all">Cold Weather</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/product-all">Hangbag</a></li>
+                        <li><a href="/product-all">Best Seller</a></li>
+                        <li><a href="/product-all">Top Seller</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        {{{body}}}
+
+        
+        <section id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Navigation</h4>
+                    <ul class="nav">
+                        <li><a href="/index">Homepage</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contac Us</a></li>
+                        <li><a href="/cart">Your Cart</a></li>
+                        <li><a href="/register">Login</a></li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>My Account</h4>
+                    <ul class="nav">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Wish List</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo"><img src="logo.png" class="site_logo" alt=""></p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+                    <br />
+                    <span class="social_icons">
+                        <a class="facebook" href="#">Facebook</a>
+                        <a class="twitter" href="#">Twitter</a>
+                        <a class="skype" href="#">Skype</a>
+                        <a class="vimeo" href="#">Vimeo</a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section id="copyright">
+            <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+        </section>
+    </div>
+    <script src="common.js"></script>
+    <script src="jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $('.flexslider').flexslider({
+                    animation: "fade",
+                    slideshowSpeed: 4000,
+                    animationSpeed: 600,
+                    controlNav: false,
+                    directionNav: true,
+                    controlsContainer: ".flex-container" // the container that holds the flexslider
+                });
+            });
+        });
+    </script>
+</body>
 </html>
