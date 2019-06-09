@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 
         res.render('index', {title: 'Home', 'feature_product': feature_product, 'popular_product': popular_product, 'latest_product': latest_product});
       }
+      Async_Await();
     }
   })
   res.render('index', { title: 'Home' });
