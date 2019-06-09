@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
       Async_Await();
     }
   })
-  res.render('index', { title: 'Home' });
 });
 
 module.exports = router;
