@@ -16,8 +16,8 @@
     </div>
 </section>
 <section class="header_text">
-    We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates.
-    <br />Don't miss to use our cheap abd best bootstrap templates.
+    Our products have top quality in Vietnam
+    <br />Any hesitation does not come immediately.
 </section>
 <section class="main-content">
     <div class="row">
@@ -34,76 +34,47 @@
                         <div class="carousel-inner">
                             <div class="active item">
                                 <ul class="thumbnails">
+                                    {{#each feature_product}}
                                     <li class="span3">
                                         <div class="product-box">
                                             <span class="sale_tag"></span>
-                                            <p><a href="/product-detail"><img src="ladies/1.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Ut wisi enim ad</a><br />
-                                            <a href="/product-all" class="category">Commodo consequat</a>
-                                            <p class="price">$17.25</p>
+                                            <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                            <a href="/product-detail" class="title">{{this.Name}}</a><br />
+                                            <a href="/product-all" class="category">{{this.Category}}</a>
+                                            <p class="price">${{this.Cost}}</p>
                                         </div>
                                     </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <span class="sale_tag"></span>
-                                            <p><a href="/product-detail"><img src="ladies/2.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Quis nostrud exerci tation</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$32.50</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="ladies/3.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Know exactly turned</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$14.20</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="ladies/4.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">You think fast</a><br />
-                                            <a href="/product-all" class="category">World once</a>
-                                            <p class="price">$31.45</p>
-                                        </div>
-                                    </li>
+                                    {{/each}}
                                 </ul>
                             </div>
-                            <div class="item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="span12">
+                    <h4 class="title">
+                        <span class="pull-left"><span class="text"><span class="line">Popular <strong>Products</strong></span></span></span>
+                        <span class="pull-right">
+                            <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+                        </span>
+                    </h4>
+                    <div id="myCarousel" class="myCarousel carousel slide">
+                        <div class="carousel-inner">
+                            <div class="active item">
                                 <ul class="thumbnails">
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="ladies/5.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Know exactly</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$22.30</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="ladies/6.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Ut wisi enim ad</a><br />
-                                            <a href="/product-all" class="category">Commodo consequat</a>
-                                            <p class="price">$40.25</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="ladies/7.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">You think water</a><br />
-                                            <a href="/product-all" class="category">World once</a>
-                                            <p class="price">$10.45</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="ladies/8.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Quis nostrud exerci</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$35.50</p>
-                                        </div>
-                                    </li>
+                                    {{#each popular_product}}
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
+                                                <a href="/product-all" class="category">{{this.Category}}</a>
+                                                <p class="price">${{this.Cost}}</p>
+                                            </div>
+                                        </li>
+                                    {{/each}}
                                 </ul>
                             </div>
                         </div>
@@ -123,75 +94,17 @@
                         <div class="carousel-inner">
                             <div class="active item">
                                 <ul class="thumbnails">
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <span class="sale_tag"></span>
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Ut wisi enim ad</a><br />
-                                            <a href="/product-all" class="category">Commodo consequat</a>
-                                            <p class="price">$25.50</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Quis nostrud exerci tation</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$17.55</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware6.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Know exactly turned</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$25.30</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware5.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">You think fast</a><br />
-                                            <a href="/product-all" class="category">World once</a>
-                                            <p class="price">$25.60</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="item">
-                                <ul class="thumbnails">
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware4.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Know exactly</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$45.50</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware3.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Ut wisi enim ad</a><br />
-                                            <a href="/product-all" class="category">Commodo consequat</a>
-                                            <p class="price">$33.50</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">You think water</a><br />
-                                            <a href="/product-all" class="category">World once</a>
-                                            <p class="price">$45.30</p>
-                                        </div>
-                                    </li>
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <p><a href="/product-detail"><img src="cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">Quis nostrud exerci</a><br />
-                                            <a href="/product-all" class="category">Quis nostrud</a>
-                                            <p class="price">$25.20</p>
-                                        </div>
-                                    </li>
+                                    {{#each latest_product}}
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
+                                                <a href="/product-all" class="category">{{this.Category}}</a>
+                                                <p class="price">${{this.Cost}}</p>
+                                            </div>
+                                        </li>
+                                    {{/each}}
                                 </ul>
                             </div>
                         </div>

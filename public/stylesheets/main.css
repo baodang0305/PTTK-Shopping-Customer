@@ -3,6 +3,9 @@
 
 /* common
 ----------------------------------------------------------------------------- */
+.color-red{
+	color: red;
+}
 body{
 	font-size: 12px;
 	font-family: 'Open Sans', arial, tahoma, sans-serif;
