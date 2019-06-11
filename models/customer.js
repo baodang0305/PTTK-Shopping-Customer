@@ -19,7 +19,7 @@ const customerSchame = new schame({
         type: String,
         required: true
     }
-});
+}, {collection: 'Customer'});
 
 const customer = mongoose.model('customer', customerSchame);
 module.exports = customer;

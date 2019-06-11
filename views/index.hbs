@@ -34,7 +34,22 @@
                         <div class="carousel-inner">
                             <div class="active item">
                                 <ul class="thumbnails">
-                                    {{#each feature_product}}
+                                    {{#each feature1}}
+                                    <li class="span3">
+                                        <div class="product-box">
+                                            <span class="sale_tag"></span>
+                                            <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                            <a href="/product-detail" class="title">{{this.Name}}</a><br />
+                                            <a href="/product-all" class="category">{{this.Category}}</a>
+                                            <p class="price">${{this.Cost}}</p>
+                                        </div>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            <div class="item">
+                                <ul class="thumbnails">
+                                    {{#each feature2}}
                                     <li class="span3">
                                         <div class="product-box">
                                             <span class="sale_tag"></span>
@@ -57,14 +72,29 @@
                     <h4 class="title">
                         <span class="pull-left"><span class="text"><span class="line">Popular <strong>Products</strong></span></span></span>
                         <span class="pull-right">
-                            <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+                            <a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
                         </span>
                     </h4>
-                    <div id="myCarousel" class="myCarousel carousel slide">
+                    <div id="myCarousel-2" class="myCarousel carousel slide">
                         <div class="carousel-inner">
                             <div class="active item">
                                 <ul class="thumbnails">
-                                    {{#each popular_product}}
+                                    {{#each popular1}}
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
+                                                <a href="/product-all" class="category">{{this.Category}}</a>
+                                                <p class="price">${{this.Cost}}</p>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            <div class="item">
+                                <ul class="thumbnails">
+                                    {{#each popular2}}
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
@@ -87,14 +117,29 @@
                     <h4 class="title">
                         <span class="pull-left"><span class="text"><span class="line">Latest <strong>Products</strong></span></span></span>
                         <span class="pull-right">
-                            <a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+                            <a class="left button" href="#myCarousel-3" data-slide="prev"></a><a class="right button" href="#myCarousel-3" data-slide="next"></a>
                         </span>
                     </h4>
-                    <div id="myCarousel-2" class="myCarousel carousel slide">
+                    <div id="myCarousel-3" class="myCarousel carousel slide">
                         <div class="carousel-inner">
                             <div class="active item">
                                 <ul class="thumbnails">
-                                    {{#each latest_product}}
+                                    {{#each new1}}
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
+                                                <a href="/product-all" class="category">{{this.Category}}</a>
+                                                <p class="price">${{this.Cost}}</p>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            <div class="item">
+                                <ul class="thumbnails">
+                                    {{#each new2}}
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>

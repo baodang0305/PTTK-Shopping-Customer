@@ -8,16 +8,22 @@ const passport = require('passport');
 const session = require('express-session');
 const validator = require('express-validator');
 const flash = require('connect-flash');
-const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
 
 const indexRouter = require('./controller/index');
 const productAllRouter = require('./controller/product/product-all');
 const productDetailRouter = require('./controller/product/product-detail');
 const loginRouter = require('./controller/customer/login');
 const registerRouter = require('./controller/customer/register');
+const customer = require('./models/customer');
 const app = express();
 
-const uri = "mongodb+srv://BaoDang:baodang@cluster0-ek6kq.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://BaoDang:baodang@cluster0-ek6kq.mongodb.net/pttkshoppingdb"; 
+mongoose.Promise = global.Promise;
+mongoose.connect(uri, {useNewUrlParser: true}).then(
+  ()=>{console.log('connect is success')},
+  err=>{console.log(err);}
+);
 
 passport.use(new localStrategy({
   usernameField: 'Username',
@@ -25,29 +31,20 @@ passport.use(new localStrategy({
   passReqToCallback: true //cho phép req.flash()
   },function(req, Username, Password, done){
     process.nextTick(function(){
-      MongoClient.connect(uri, {useNewUrlParser: true}, function(err, dbRef){
-        if(err){
-            return done(err);
+      customer.findOne({'Username': Username}).exec((err, user)=>{
+        if(err) return done(err);
+        else if(!user){
+          return done(null, false, req.flash('mess', 'Incorrect Username and Password'));
         }
         else{
-            const collectionCus = dbRef.db('pttkshoppingdb').collection('Customer');
-            let Async_Await = async()=>{
-              const user = await collectionCus.findOne({'Username': Username});
-              if(!user){
-                return done(null, false, req.flash('mess', 'Incorrect Username and Password'));
-              }
-              else{
-                if(!bcrypt.compareSync(Password, user.Password)){
-                  return done(null, false, req.flash('mess', 'Incorrect Username and Password'));
-                }
-                else{
-                  return done(null, user)
-                }
-              }
-            }
-            Async_Await();
+          if(!bcrypt.compareSync(Password, user.Password)){
+            return done(null, false, req.flash('mess', 'Incorrect Username and Password'));
+          }
+          else{
+            return done(null, user)
+          }
         }
-    });
+      })
     })
 }));
 
@@ -56,17 +53,10 @@ passport.serializeUser(function(user, done){
 });
 
 passport.deserializeUser(function(Username, done){
-  MongoClient.connect(uri, {useNewUrlParser: true}, function(err, dbRef){
+  customer.findOne({Username: Username}, function(err, user){
     if(err) return done(err);
-    else{
-      const customerCollection = dbRef.db('pttkshoppingdb').collection('Customer');
-      customerCollection.findOne({Username: Username}, function(err, user){
-        if(err) return done(err);
-        dbRef.close();
-        return done(err, user);
-      });
-    }
-  });
+    return done(err, user);
+  })
 });
 
 app.set('views', [path.join(__dirname, 'views'),

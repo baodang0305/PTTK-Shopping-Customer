@@ -1,24 +1,19 @@
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
+const product = require('../models/product');
 const router = express.Router();
 
-const uri = "mongodb+srv://BaoDang:baodang@cluster0-ek6kq.mongodb.net/test?retryWrites=true&w=majority";
-
 router.get('/', function(req, res, next) {
-  MongoClient.connect(uri, {useNewUrlParser: true}, function(err, dbRef){
-    if(err) return console.log(err);
-    else{
-      const productCollection = dbRef.db('pttkshoppingdb').collection('Product');
-      let Async_Await = async()=>{
-        const feature_product = await productCollection.find({}).toArray();
-        const latest_product = await productCollection.find({}).toArray();
-        const popular_product = await productCollection.find({}).toArray();
-
-        res.render('index', {title: 'Home', 'feature_product': feature_product, 'popular_product': popular_product, 'latest_product': latest_product});
-      }
-      Async_Await();
-    }
-  })
+  //const feature2_product;
+  let Async_Await = async() =>{
+    let feature1 = await product.find({Product_Group: 'feature'}).limit(4).skip(0);
+    let feature2 = await product.find({Product_Group: 'feature'}).limit(4).skip(4);
+    let new1 = await product.find({Product_Group: 'new'}).limit(4).skip(0);
+    let new2 = await product.find({Product_Group: 'new'}).limit(4).skip(4);
+    let popular1 = await product.find({Product_Group: 'popular'}).limit(4).skip(0);
+    let popular2 = await product.find({Product_Group: 'popular'}).limit(4).skip(4);
+    res.render('index', {title: 'Home', 'feature1': feature1, 'feature2': feature2, 'new1': new1, 'new2': new2, 'popular1':popular1, 'popular2':popular2});
+  }
+  Async_Await();
 });
 
 module.exports = router;
