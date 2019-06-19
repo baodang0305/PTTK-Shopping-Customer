@@ -1,78 +1,103 @@
 <section class="header_text sub">
-	<img class="pageBanner" src="pageBanner.png" alt="New products">
+	<img class="pageBanner" src="/images/pageBanner.png" alt="New products">
 	<h4><span>Product Detail</span></h4>
 </section>
 <section class="main-content">
 	<div class="row">
-		<div class="span9">
+		<div class="span12">
 			<div class="row">
 				<div class="span4">
-					<a href="ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="ladies/1.jpg"></a>
+					<a href="ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="https://pttk-shopping-web-admin.herokuapp.com/{{product_detail.Image}}"></a>
 					<ul class="thumbnails small">
 						<li class="span1">
-							<a href="ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="ladies/2.jpg" alt=""></a>
+							<a href="ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="/images/2.jpg" alt=""></a>
 						</li>
 						<li class="span1">
-							<a href="ladies/3.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="ladies/3.jpg" alt=""></a>
+							<a href="ladies/3.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="/images/3.jpg" alt=""></a>
 						</li>
 						<li class="span1">
-							<a href="ladies/4.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="ladies/4.jpg" alt=""></a>
+							<a href="ladies/4.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="/images/4.jpg" alt=""></a>
 						</li>
 						<li class="span1">
-							<a href="ladies/5.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="ladies/5.jpg" alt=""></a>
+							<a href="ladies/5.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="/images/5.jpg" alt=""></a>
 						</li>
 					</ul>
 				</div>
 				<div class="span5">
 					<address>
-						<strong>Brand:</strong> <span>Apple</span><br>
-						<strong>Product Code:</strong> <span>Product 14</span><br>
-						<strong>Reward Points:</strong> <span>0</span><br>
-						<strong>Availability:</strong> <span>Out Of Stock</span><br>
+						<strong>Name:</strong> <span>{{product_detail.Name}}</span><br>
+						<strong>Gender:</strong> <span>{{product_detail.Gender}}</span><br>
+						<strong>Caterogy:</strong> <span>{{product_detail.Category}}</span><br>
 					</address>
-					<h4><strong>Price: $587.50</strong></h4>
+					<h4><strong>Price: ${{product_detail.Cost}}</strong></h4>
 				</div>
 				<div class="span5">
-					<form class="form-inline">
-						<label class="checkbox">
-							<input type="checkbox" value=""> Option one is this and that
-						</label>
-						<br />
-						<label class="checkbox">
-							<input type="checkbox" value=""> Be sure to include why it's great
-						</label>
-						<p>&nbsp;</p>
-						<label>Qty:</label>
-						<input type="text" class="span1" placeholder="1">
-						<button class="btn btn-inverse" type="submit">Add to cart</button>
+					<form  action='/cart/add-product-into-cart/id={{product_detail._id}}' method="POST" class="form-inline" onsubmit="return checkforblank()">
+						<label>Quantity:</label>
+						<input type="text" class="span1" placeholder='1' name="Quantity" id="Quantity">
+						<input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+						<span id="error-messages"></span>
 					</form>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span9">
+				<div class="span12">
 					<ul class="nav nav-tabs" id="myTab">
-						<li class="active"><a href="#home">Description</a></li>
-						<li class=""><a href="#profile">Additional Information</a></li>
+						<li class="active"><a href="#description">Description</a></li>
+						<li class=""><a href="#comment">Comment</a></li>
 					</ul>
 					<div class="tab-content">
-						<div class="tab-pane active" id="home">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
-						<div class="tab-pane" id="profile">
-							<table class="table table-striped shop_attributes">
-								<tbody>
-									<tr class="">
-										<th>Size</th>
-										<td>Large, Medium, Small, X-Large</td>
-									</tr>
-									<tr class="alt">
-										<th>Colour</th>
-										<td>Orange, Yellow</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+						<div class="tab-pane active" id="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
+						<div class="tab-pane fade " id="comment">
+							<div>
+							{{#if hasComment}}
+								{{#each related_comment}}
+									<div class="media">
+										<div class="media-body">
+											<div class="aa-product-rating">
+												{{#each Star}}
+												<span class="fa fa-star{{this}}"></span>
+												{{/each}}
+											</div>
+											<h4 class="media-heading"><strong>{{this.Username}}</strong> - <span>{{this.Time}}</span></h4>
+											<p>{{this.Message}}</p>
+										</div>
+									</div>
+								{{/each}}
+							{{else}}
+							{{/if}}
+							<h4>Add comment</h4>
+							<!-- review form -->
+							<form action="/customer/add-review" method="post">
+								<div class="aa-your-rating">
+								<span class="fa fa-star-o" id="star1"></span>
+								<span class="fa fa-star-o" id="star2"></span>
+								<span class="fa fa-star-o" id="star3"></span>
+								<span class="fa fa-star-o" id="star4"></span>
+								<span class="fa fa-star-o" id="star5"></span>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control width-500" rows="3"  id="message" name="Message"></textarea>
+								</div>
+								{{#if user}}
+								{{else}}
+								 <div class="control-group">
+									<label class="control-label">Name</label>
+									<div class="controls">
+										<input type="text" id="name" name="Name" class="width-500">
+									</div>
+								</div>
+								{{/if}}
+								<input type="hidden" name="ProductId" value="{{ product_detail._id }}">
+								<input type="hidden" name="star" value="" id="starResult">
+								<button type="submit" class="btn btn-default aa-review-submit">Gửi</button>
+							</form>
+							</div>
+							</div>
 					</div>
 				</div>
-				<div class="span9">
+
+				<div class="span12">
 					<br>
 					<h4 class="title">
 						<span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
@@ -84,62 +109,38 @@
 						<div class="carousel-inner">
 							<div class="active item">
 								<ul class="thumbnails listing-products">
+									{{#each related1}}
 									<li class="span3">
 										<div class="product-box">
 											<span class="sale_tag"></span>
-											<a href="/product-detail"><img alt="" src="ladies/6.jpg"></a><br />
-											<a href="/product-detail" class="title">Wuam ultrices rutrum</a><br />
-											<a href="#" class="category">Suspendisse aliquet</a>
-											<p class="price">$341</p>
+											<form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+												<a href="/product/product-detail={{this._id}}"><img alt="" src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}"></a><br />
+												<a class="title">{{this.Name}}</a><br />
+												<a class="category">{{this.Category}}</a>
+												<p class="price">${{this.Cost}}</p>
+												<input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+											</form>
 										</div>
 									</li>
-									<li class="span3">
-										<div class="product-box">
-											<span class="sale_tag"></span>
-											<a href="/product-detail"><img alt="" src="ladies/5.jpg"></a><br />
-											<a href="/product-detail" class="title">Fusce id molestie massa</a><br />
-											<a href="#" class="category">Phasellus consequat</a>
-											<p class="price">$341</p>
-										</div>
-									</li>
-									<li class="span3">
-										<div class="product-box">
-											<a href="/product-detail"><img alt="" src="ladies/4.jpg"></a><br />
-											<a href="/product-detail" class="title">Praesent tempor sem</a><br />
-											<a href="#" class="category">Erat gravida</a>
-											<p class="price">$28</p>
-										</div>
-									</li>
+									{{/each}}
 								</ul>
 							</div>
 							<div class="item">
 								<ul class="thumbnails listing-products">
+									{{#each related2}}
 									<li class="span3">
 										<div class="product-box">
 											<span class="sale_tag"></span>
-											<a href="/product-detail"><img alt="" src="ladies/1.jpg"></a><br />
-											<a href="/product-detail" class="title">Fusce id molestie massa</a><br />
-											<a href="#" class="category">Phasellus consequat</a>
-											<p class="price">$341</p>
+											<form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+												<a href="/product-detail-{{this._id}}"><img alt="" src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}"></a><br />
+												<a class="title">{{this.Name}}</a><br />
+												<a class="category">{{this.Category}}</a>
+												<p class="price">${{this.Cost}}</p>
+												<input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+											</form>
 										</div>
 									</li>
-									<li class="span3">
-										<div class="product-box">
-											<a href="/product-detail"><img alt="" src="ladies/2.jpg"></a><br />
-											<a href="/product-detail">Praesent tempor sem</a><br />
-											<a href="#" class="category">Erat gravida</a>
-											<p class="price">$28</p>
-										</div>
-									</li>
-									<li class="span3">
-										<div class="product-box">
-											<span class="sale_tag"></span>
-											<a href="/product-detail"><img alt="" src="ladies/3.jpg"></a><br />
-											<a href="/product-detail" class="title">Wuam ultrices rutrum</a><br />
-											<a href="#" class="category">Suspendisse aliquet</a>
-											<p class="price">$341</p>
-										</div>
-									</li>
+									{{/each}}
 								</ul>
 							</div>
 						</div>
@@ -147,106 +148,27 @@
 				</div>
 			</div>
 		</div>
-		<div class="span3 col">
-			<div class="block">
-				<ul class="nav nav-list">
-					<li class="nav-header">SUB CATEGORIES</li>
-					<li><a href="/product-all">Nullam semper elementum</a></li>
-					<li class="active"><a href="/product-all">Phasellus ultricies</a></li>
-					<li><a href="/product-all">Donec laoreet dui</a></li>
-					<li><a href="/product-all">Nullam semper elementum</a></li>
-					<li><a href="/product-all">Phasellus ultricies</a></li>
-					<li><a href="/product-all">Donec laoreet dui</a></li>
-				</ul>
-				<br />
-				<ul class="nav nav-list below">
-					<li class="nav-header">MANUFACTURES</li>
-					<li><a href="/product-all">Adidas</a></li>
-					<li><a href="/product-all">Nike</a></li>
-					<li><a href="/product-all">Dunlop</a></li>
-					<li><a href="/product-all">Yamaha</a></li>
-				</ul>
-			</div>
-			<div class="block">
-				<h4 class="title">
-					<span class="pull-left"><span class="text">Randomize</span></span>
-					<span class="pull-right">
-						<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
-					</span>
-				</h4>
-				<div id="myCarousel" class="carousel slide">
-					<div class="carousel-inner">
-						<div class="active item">
-							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>
-										<a href="/product-detail"><img alt="" src="ladies/7.jpg"></a><br />
-										<a href="/product-detail" class="title">Fusce id molestie massa</a><br />
-										<a href="#" class="category">Suspendisse aliquet</a>
-										<p class="price">$261</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="item">
-							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">
-										<a href="/product-detail"><img alt="" src="ladies/8.jpg"></a><br />
-										<a href="/product-detail" class="title">Tempor sem sodales</a><br />
-										<a href="#" class="category">Urna nec lectus mollis</a>
-										<p class="price">$134</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="block">
-				<h4 class="title"><strong>Best</strong> Seller</h4>
-				<ul class="small-product">
-					<li>
-						<a href="#" title="Praesent tempor sem sodales">
-							<img src="ladies/1.jpg" alt="Praesent tempor sem sodales">
-						</a>
-						<a href="#">Praesent tempor sem</a>
-					</li>
-					<li>
-						<a href="#" title="Luctus quam ultrices rutrum">
-							<img src="ladies/2.jpg" alt="Luctus quam ultrices rutrum">
-						</a>
-						<a href="#">Luctus quam ultrices rutrum</a>
-					</li>
-					<li>
-						<a href="#" title="Fusce id molestie massa">
-							<img src="ladies/3.jpg" alt="Fusce id molestie massa">
-						</a>
-						<a href="#">Fusce id molestie massa</a>
-					</li>
-				</ul>
-			</div>
-		</div>
 	</div>
 </section>	
-
+<script src="/javascripts/custom.js"></script>
+<script src="/javascripts/star-hover.js"></script>
 <script>
-			$(function () {
-				$('#myTab a:first').tab('show');
-				$('#myTab a').click(function (e) {
-					e.preventDefault();
-					$(this).tab('show');
-				})
-			})
-			$(document).ready(function() {
-				$('.thumbnail').fancybox({
-					openEffect  : 'none',
-					closeEffect : 'none'
-				});
+	$(function () {
+		$('#myTab a:first').tab('show');
+		$('#myTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		})
+	})
+	$(document).ready(function() {
+		$('.thumbnail').fancybox({
+			openEffect  : 'none',
+			closeEffect : 'none'
+		});
 
-				$('#myCarousel-2').carousel({
-                    interval: 2500
-                });
-			});
+		$('#myCarousel-2').carousel({
+			interval: 2500
+		});
+	});
+	
 </script>

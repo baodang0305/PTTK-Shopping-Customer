@@ -7,47 +7,46 @@
     <meta name="description" content="">
     <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
     <!-- bootstrap -->
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap-responsive.min.css" rel="stylesheet">
 
-    <link href="bootstrappage.css" rel="stylesheet" />
-    <link href="custom.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="font-awesome.min.css">
+    <link href="/stylesheets/bootstrappage.css" rel="stylesheet" />
+    <link href="/stylesheets/custom.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
 
     <!-- global styles -->
-    <link href="flexslider.css" rel="stylesheet" />
-    <link href="main.css" rel="stylesheet" />
+    <link href="/stylesheets/flexslider.css" rel="stylesheet" />
+    <link href="/stylesheets/main.css" rel="stylesheet" />
 
     <!-- scripts -->
-    <script src="jquery-1.7.2.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="superfish.js"></script>
-    <script src="jquery.scrolltotop.js"></script>
+    <script src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/superfish.js"></script>
+    <script src="/javascripts/jquery.scrolltotop.js"></script>
 
 </head>
 <body>
     <div id="top-bar" class="container">
         <div class="row">
             <div class="span4">
-                <form method="POST" class="search_form">
-                    <input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+                <form action="/search"  method="get" >
+                    <input type="text" class=" search-query" Placeholder="search" name="strSearch">
                 </form>
             </div>
             <div class="span8">
                 <div class="account pull-right">
                     <ul class="user-menu">
-                        {{#if mess}}
-                            <li><a href="/checkout">Checkout</a></li>
-                            <li><a href="/cart">Your Cart</a></li>
-                            <li><a class="fa fa-user fa-lg">&nbsp;{{mess}}</a></li>
+                        {{#if user.Username}}
+                            <li><a href="/cart/loadcart">Your Cart</a></li>
+                            <li><a class="fa fa-user fa-lg">&nbsp;{{user.Username}}</a></li>
                             <li>
-                                <form action="/logout" method="GET">
+                                <form action="/customer/logout" method="GET">
                                     <input type="submit" value="Logout">
                                 </form>
                             </li>
                         {{else}}
-                            <li><a href="/register">Register</a></li>
-                            <li><a href="/login">Login</a></li>
+                            <li><a href="/customer/register">Register</a></li>
+                            <li><a href="/customer/login">Login</a></li>
                         {{/if}}
                     </ul>
                 </div>
@@ -57,27 +56,27 @@
     <div id="wrapper" class="container">
         <section class="navbar main-menu">
             <div class="navbar-inner main-menu">
-                <a href="/" class="logo pull-left"><img src="logo.png" class="site_logo" alt=""></a>
+                <a href="/" class="logo pull-left"><img src="/images/logo.png" class="site_logo" alt=""></a>
                 <nav id="menu" class="pull-right">
                     <ul>
                         <li>
-                            <a href="/product-all-w">Woman</a>
+                            <a href="/product/product-all/women/viewpage=1">Women</a>
                             <ul>
-                                <li><a href="/product-all-ws">Shirt</a></li>
-                                <li><a href="/product-all-wt">Tshirt</a></li>
-                                <li><a href="/product-all-wj">Jean</a></li>
+                                <li><a href="/product/product-all/women-shirt/viewpage=1">Shirt</a></li>
+                                <li><a href="/product/product-all/woment-shirt/viewpage=1">Tshirt</a></li>
+                                <li><a href="/product/product-all/woment-jean/viewpage=1">Jean</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/product-all-m">Man</a>
+                            <a href="/product/product-all/man/viewpage=1">Man</a>
                             <ul>
-                                <li><a href="/product-all-ms">Shirt</a></li>
-                                <li><a href="/product-all-mt">Tshirt</a></li>
-                                <li><a href="/product-all-mj">Jean</a></li>
+                                <li><a href="/product/product-all/man-shirt/viewpage=1">Shirt</a></li>
+                                <li><a href="/product/product-all/mant-shirt/viewpage=1">Tshirt</a></li>
+                                <li><a href="/product/product-all/man-jean/viewpage=1">Jean</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/product-all-s">Sport</a>
+                            <a href="/product/product-all/sport/viewpage=1">Sport</a>
                         </li>
                     </ul>
                 </nav>
@@ -92,31 +91,31 @@
                 <div class="span3">
                     <h4>Navigation</h4>
                     <ul class="nav">
-                        <li><a href="">Homepage</a></li>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">Contac Us</a></li>
-                        <li><a href="">Your Cart</a></li>
-                        <li><a href="">Login</a></li>
+                        <li><a href="/">Homepage</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contac Us</a></li>
+                        <li><a href="#">Your Cart</a></li>
+                        <li><a href="#">Login</a></li>
                     </ul>
                 </div>
                 <div class="span4">
                     <h4>My Account</h4>
                     <ul class="nav">
-                        <li><a href="">My Account</a></li>
-                        <li><a href="">Order History</a></li>
-                        <li><a href="">Wish List</a></li>
-                        <li><a href="">Newsletter</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Wish List</a></li>
+                        <li><a href="#">Newsletter</a></li>
                     </ul>
                 </div>
                 <div class="span5">
-                    <p class="logo"><img src="logo.png" class="site_logo" alt=""></p>
+                    <p class="logo"><img src="/images/logo.png" class="site_logo" alt=""></p>
                     <p>High quality products.</p>
                     <br />
                     <span class="social_icons">
-                        <a class="facebook" href="">Facebook</a>
-                        <a class="twitter" href="">Twitter</a>
-                        <a class="skype" href="">Skype</a>
-                        <a class="vimeo" href="">Vimeo</a>
+                        <a class="facebook" href="#">Facebook</a>
+                        <a class="twitter" href="#">Twitter</a>
+                        <a class="skype" href="#">Skype</a>
+                        <a class="vimeo" href="#">Vimeo</a>
                     </span>
                 </div>
             </div>
@@ -125,8 +124,8 @@
             <span>Copyright 2013 bootstrappage template  All right reserved.</span>
         </section>
     </div>
-    <script src="common.js"></script>
-    <script src="jquery.flexslider-min.js"></script>
+    <script src="/javascripts/common.js"></script>
+    <script src="/javascripts/jquery.flexslider-min.js"></script>
     <script type="text/javascript">
         $(function () {
             $(document).ready(function () {

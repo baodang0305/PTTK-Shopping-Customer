@@ -1,61 +1,60 @@
 <section class="header_text sub">
-    <img class="pageBanner" src="pageBanner.png" alt="New products">
+    <img class="pageBanner" src="/images/pageBanner.png" alt="New products">
 </section>
 <section class="main-content"></section>
     <div class="row">
-        <div class="span12 text-center">
+        <div class="span12">
             <h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
             {{#if mess}}
-                <input class="width-500 color-red" class="color-red" type="text" value="{{mess}}" readonly>
+               <div class="align-center"> <input class="width-500 color-red" class="color-red" type="text" value="{{mess}}" readonly></div>
             {{/if}}
-            <form action="/register" method="POST" class="form-stacked">
+            <form action="/customer/register" method="POST" class="form-stacked">
                 <fieldset>
-                    <div class="control-group">
+                    <div class="control-group pl-430">
                         <label class="control-label">Username<span class="color-red"> (*)</span></label>
                         <div class="controls">
                             <input type="text" placeholder="Enter your username" class="input-xlarge" name="Username" id="Username">
                         </div>
                     </div>
-                    <div class="control-group">
+                    <div class="control-group pl-430">
                         <label class="control-label">Password<span class="color-red"> (*)</span></label>
                         <div class="controls">
                             <input type="password" placeholder="Enter your password" class="input-xlarge" name="Password">
                         </div>
                         <label class="color-red">Password contains at least 5 and most 20 character</label>
                     </div>
-                    <div class="control-group">
+                    <div class="control-group pl-430">
                         <label class="control-label">Confirm Password<span class="color-red"> (*)</span></label>
                         <div class="controls">
                             <input type="password" placeholder="Enter your password" class="input-xlarge" name="ConfirmPassword">
                         </div>
                         <label class="color-red">Password contains at least 5 and most 20 character</label>
                     </div>
-                    <div class="control-group">
+                    <div class="control-group pl-430">
                         <label class="control-label">Full Name<span class="color-red"> (*)</span></label>
                         <div class="controls">
                             <input type="text" placeholder="Enter your full name" class="input-xlarge" name="Name">
                         </div>
                     </div>
-                    <div class="control-group">
+                    <div class="control-group pl-430">
                         <label class="control-label">Email Address<span class="color-red"> (*)</span></label>
                         <div class="controls">
                             <input type="email" placeholder="Enter your email" class="input-xlarge" name="Email">
                         </div>
                     </div>
                     <hr>
-                    <input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account">
+                    <div class="align-center"><input tabindex="9" class="btn btn-inverse large " type="submit" value="Create your account"></div>
                 </fieldset>
             </form>
         </div>
     </div>
 </section>	
 
-<!--
-<script>
+
+{{!-- <script>
 			$(document).ready(function() {
 				$('#checkout').click(function (e) {
 					document.location.href = "/checkout";
 				})
 			});
-</script>
--->
+</script> --}}

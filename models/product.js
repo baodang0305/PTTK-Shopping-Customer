@@ -26,6 +26,6 @@ const productSchema = new Schema({
     Describe: String,
     Product_Group: String
 }, {collection: 'Product'});
+const listProduct = mongoose.model("Product", productSchema);
 
-const Product = mongoose.model("Product", productSchema);
-module.exports = Product;
+module.exports = listProduct;

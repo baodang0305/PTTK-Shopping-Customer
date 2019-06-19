@@ -1,67 +1,73 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
-const localStrategy = require('passport-local').Strategy;
 const passport = require('passport');
 const session = require('express-session');
 const validator = require('express-validator');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
+const hbs = require('hbs');
 
-const indexRouter = require('./controller/index');
-const productAllRouter = require('./controller/product/product-all');
-const productDetailRouter = require('./controller/product/product-detail');
-const loginRouter = require('./controller/customer/login');
-const registerRouter = require('./controller/customer/register');
-const customer = require('./models/customer');
+const indexRouter = require('./router/index');
+const productRouter = require('./router/product');
+const customerRouter = require('./router/customer');
+const cartRouter = require('./router/cart');
+const orderRouter = require('./router/order');
+
+require('./config/passport')(passport);
 const app = express();
 
+/*
 const uri = "mongodb+srv://BaoDang:baodang@cluster0-ek6kq.mongodb.net/pttkshoppingdb"; 
 mongoose.Promise = global.Promise;
 mongoose.connect(uri, {useNewUrlParser: true}).then(
   ()=>{console.log('connect is success')},
   err=>{console.log(err);}
-);
+);*/
 
-passport.use(new localStrategy({
-  usernameField: 'Username',
-  passwordField: 'Password',
-  passReqToCallback: true //cho phép req.flash()
-  },function(req, Username, Password, done){
-    process.nextTick(function(){
-      customer.findOne({'Username': Username}).exec((err, user)=>{
-        if(err) return done(err);
-        else if(!user){
-          return done(null, false, req.flash('mess', 'Incorrect Username and Password'));
-        }
-        else{
-          if(!bcrypt.compareSync(Password, user.Password)){
-            return done(null, false, req.flash('mess', 'Incorrect Username and Password'));
-          }
-          else{
-            return done(null, user)
-          }
-        }
-      })
-    })
-}));
 
-passport.serializeUser(function(user, done){
-  done(null, user.Username);
-});
+mongoose.Promise = Promise;
+const option = {
+  useNewUrlParser: true,
+  autoReconnect: true,
+  reconnectTries: 1000000,
+  reconnectInterval: 3000
+};
+const run = async () => {
+  await mongoose.connect('mongodb+srv://BaoDang:baodang@cluster0-ek6kq.mongodb.net/pttkshoppingdb', option);
+}
+run().catch(error => console.error(error));
 
-passport.deserializeUser(function(Username, done){
-  customer.findOne({Username: Username}, function(err, user){
-    if(err) return done(err);
-    return done(err, user);
-  })
+hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
+  switch (operator) {
+      case '==':
+          return (v1 == v2) ? options.fn(this) : options.inverse(this);
+      case '===':
+          return (v1 === v2) ? options.fn(this) : options.inverse(this);
+      case '!==':
+          return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+      case '<':
+          return (v1 < v2) ? options.fn(this) : options.inverse(this);
+      case '<=':
+          return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+      case '>':
+          return (v1 > v2) ? options.fn(this) : options.inverse(this);
+      case '>=':
+          return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+      case '&&':
+          return (v1 && v2) ? options.fn(this) : options.inverse(this);
+      case '||':
+          return (v1 || v2) ? options.fn(this) : options.inverse(this);
+      default:
+          return options.inverse(this);
+  }
 });
 
 app.set('views', [path.join(__dirname, 'views'),
                   path.join(__dirname, 'views/product'),
-                  path.join(__dirname, 'views/customer')
+                  path.join(__dirname, 'views/customer'),
+                  path.join(__dirname, 'views/cart')
                  ]);
 app.set('view engine', 'hbs');
 
@@ -72,16 +78,13 @@ app.use(passport.session());
 app.use(validator());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public/images')));
-app.use(express.static(path.join(__dirname, 'public/javascripts')));
-app.use(express.static(path.join(__dirname, 'public/stylesheets')));
 app.use('/fonts', express.static(path.join(__dirname, 'fonts')));
 
 app.use('/', indexRouter);
-app.use('/', productAllRouter);
-app.use('/', productDetailRouter);
-app.use('/', loginRouter);
-app.use('/', registerRouter);
+app.use('/customer', customerRouter);
+app.use('/product', productRouter);
+app.use('/cart', cartRouter);
+app.use('/order', orderRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

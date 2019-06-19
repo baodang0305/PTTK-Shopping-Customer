@@ -1,21 +1,24 @@
 <section class="header_text sub">
-    <img class="pageBanner" src="pageBanner.png" alt="New products">
+    <img class="pageBanner" src="/images/pageBanner.png" alt="New products">
     <h4><span>New products</span></h4>
 </section>
 <section class="main-content">
 
     <div class="row">
         <div class="span12">
-
+            <h3 class="text-center text-font-color-pink">{{this.mess}}</h3>
             <ul class="thumbnails listing-products">
                 {{#each all}}
                 <li class="span3">
                     <div class="product-box">
-                        <a href="/product-detail"><img alt="" src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}"></a><br />
-                        <a href="/product-detail" class="title">{{this.Name}}</a><br />
-                        <a href="#" class="category">{{this.Category}}</a>
-                        <p class="price">${{this.Cost}}</p>
-                    </div>
+						 <form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+							<a href="/product/product-detail={{this._id}}"><img alt="" src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}"></a><br />
+							<a class="title">{{this.Name}}</a><br />
+							<a class="category">{{this.Category}}</a>
+							<p class="price">${{this.Cost}}</p>
+							<input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+						</form>
+					</div>
                 </li>
                 {{/each}}
             </ul>
@@ -23,15 +26,81 @@
             <hr>
             <div class="pagination pagination-small pagination-centered">
                 <ul>
-                    <li><a href="#">Prev</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">Next</a></li>
+                    <li>
+                        <a id="prev" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a id="page1">{{page}}</a></li>
+                    <li><a id="page2"></a></li>
+                    <li><a id="page3"></a></li>
+                    <li>
+                        <a id="next" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
         
     </div>
 </section>
+
+<script>
+	var page1 = parseInt($('#page1').html());
+    var page2 = page1 + 1;
+    var page3 = page1 + 2;
+	$('#page2').click(function () {
+		if ({{count}} == 8) {
+			$('#page2').attr("href", "/product/product-all/{{category}}/viewpage=" + page2);
+			$('#page1').removeClass('active');
+			$('#page2').addClass('active');
+			$('#page3').removeClass('active');
+			$('#page1').html(page1);
+			$('#page2').html(page2);
+			$('#page3').html(page3);
+			console.log(page3);
+		}
+	});
+	$('#page3').click(function () {
+		if ({{count}} == 8) {
+			$('#page3').attr("href", "/product/product-all/{{category}}/viewpage=" + page3);
+			$('#page1').removeClass('active');
+			$('#page2').removeClass('active');
+			$('#page3').addClass('active');
+			$('#page1').html(page1);
+			$('#page2').html(page2);
+			$('#page3').html(page3);
+		}
+	});
+	$('#next').click(function () {
+		if ({{count}} == 8) {
+			page1 += 1;
+			page2 += 1;
+			page3 += 1;
+			$('#next').attr("href", "/product/product-all/{{category}}/viewpage=" + page1);
+			$('#page1').addClass('active');
+			$('#page2').removeClass('active');
+			$('#page3').removeClass('active');
+			$('#page1').html(page1);
+			$('#page2').html(page2);
+			$('#page3').html(page3);
+		}
+	});
+	$('#prev').click(function () {
+		if (page1 > 1) {
+			page1 -= 1;
+			page2 -= 1;
+			page3 -= 1;
+			$('#prev').attr("href", "/product/product-all/{{category}}/viewpage=" + page1);
+			$('#page1').addClass('active');
+			$('#page2').removeClass('active');
+			$('#page3').removeClass('active');
+			$('#page1').html(page1);
+			$('#page2').html(page2);
+			$('#page3').html(page3);
+		}
+	});
+	$('#page2').html(page2);
+	$('#page3').html(page3);
+</script>

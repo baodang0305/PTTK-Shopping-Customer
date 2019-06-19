@@ -2,10 +2,10 @@
     <div class="flexslider">
         <ul class="slides">
             <li>
-                <img src="carousel/banner-1.jpg" alt="" />
+                <img src="/images/banner-1.jpg" alt="" />
             </li>
             <li>
-                <img src="carousel/banner-2.jpg" alt="" />
+                <img src="/images/banner-2.jpg" alt="" />
                 <div class="intro">
                     <h1>Mid season sale</h1>
                     <p><span>Up to 50% Off</span></p>
@@ -19,6 +19,7 @@
     Our products have top quality in Vietnam
     <br />Any hesitation does not come immediately.
 </section>
+
 <section class="main-content">
     <div class="row">
         <div class="span12">
@@ -35,30 +36,36 @@
                             <div class="active item">
                                 <ul class="thumbnails">
                                     {{#each feature1}}
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <span class="sale_tag"></span>
-                                            <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">{{this.Name}}</a><br />
-                                            <a href="/product-all" class="category">{{this.Category}}</a>
-                                            <p class="price">${{this.Cost}}</p>
-                                        </div>
-                                    </li>
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+                                                    <p><a href="/product/product-detail={{this._id}}"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                    <a class="title">{{this.Name}}</a><br />
+                                                    <a class="category">{{this.Category}}</a>
+                                                    <p class="price">${{this.Cost}}</p>
+                                                    <input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+                                                </form>
+                                            </div>
+                                        </li>
                                     {{/each}}
                                 </ul>
                             </div>
                             <div class="item">
                                 <ul class="thumbnails">
                                     {{#each feature2}}
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <span class="sale_tag"></span>
-                                            <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
-                                            <a href="/product-detail" class="title">{{this.Name}}</a><br />
-                                            <a href="/product-all" class="category">{{this.Category}}</a>
-                                            <p class="price">${{this.Cost}}</p>
-                                        </div>
-                                    </li>
+                                        <li class="span3">
+                                            <div class="product-box">
+                                                <span class="sale_tag"></span>
+                                                <form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+                                                    <p><a href="/product/product-detail={{this._id}}"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                    <a class="title">{{this.Name}}</a><br />
+                                                    <a class="category">{{this.Category}}</a>
+                                                    <p class="price">${{this.Cost}}</p>
+                                                    <input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+                                                </form>
+                                            </div>
+                                        </li>
                                     {{/each}}
                                 </ul>
                             </div>
@@ -83,10 +90,13 @@
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
-                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
-                                                <a href="/product-all" class="category">{{this.Category}}</a>
-                                                <p class="price">${{this.Cost}}</p>
+                                                <form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+                                                    <p><a href="/product/product-detail={{this._id}}"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                    <a class="title">{{this.Name}}</a><br />
+                                                    <a class="category">{{this.Category}}</a>
+                                                    <p class="price">${{this.Cost}}</p>
+                                                    <input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+                                                </form>
                                             </div>
                                         </li>
                                     {{/each}}
@@ -98,10 +108,13 @@
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
-                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
-                                                <a href="/product-all" class="category">{{this.Category}}</a>
-                                                <p class="price">${{this.Cost}}</p>
+                                                <form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+                                                    <p><a href="/product/product-detail={{this._id}}"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                    <a class="title">{{this.Name}}</a><br />
+                                                    <a class="category">{{this.Category}}</a>
+                                                    <p class="price">${{this.Cost}}</p>
+                                                    <input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+                                                </form>
                                             </div>
                                         </li>
                                     {{/each}}
@@ -128,10 +141,13 @@
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
-                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
-                                                <a href="/product-all" class="category">{{this.Category}}</a>
-                                                <p class="price">${{this.Cost}}</p>
+                                                <form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+                                                    <p><a href="/product/product-detail={{this._id}}"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                    <a class="title">{{this.Name}}</a><br />
+                                                    <a class="category">{{this.Category}}</a>
+                                                    <p class="price">${{this.Cost}}</p>
+                                                    <input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+                                                </form>
                                             </div>
                                         </li>
                                     {{/each}}
@@ -143,10 +159,13 @@
                                         <li class="span3">
                                             <div class="product-box">
                                                 <span class="sale_tag"></span>
-                                                <p><a href="/product-detail"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
-                                                <a href="/product-detail" class="title">{{this.Name}}</a><br />
-                                                <a href="/product-all" class="category">{{this.Category}}</a>
-                                                <p class="price">${{this.Cost}}</p>
+                                                <form action="/cart/add-product-into-cart/id={{this._id}}" method="POST">
+                                                    <p><a href="/product/product-detail={{this._id}}"><img src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}" alt="" /></a></p>
+                                                    <a class="title">{{this.Name}}</a><br />
+                                                    <a class="category">{{this.Category}}</a>
+                                                    <p class="price">${{this.Cost}}</p>
+                                                    <input class="btn btn-inverse" type="submit" value="Add To Cart" id="submit">
+                                                </form>
                                             </div>
                                         </li>
                                     {{/each}}
@@ -160,7 +179,7 @@
                 <div class="span4">
                     <div class="service">
                         <div class="responsive">
-                            <img src="feature_img_2.png" alt="" />
+                            <img src="/images/feature_img_2.png" alt="" />
                             <h4>MODERN <strong>DESIGN</strong></h4>
                             <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
                         </div>
@@ -169,7 +188,7 @@
                 <div class="span4">
                     <div class="service">
                         <div class="customize">
-                            <img src="feature_img_1.png" alt="" />
+                            <img src="/images/feature_img_1.png" alt="" />
                             <h4>FREE <strong>SHIPPING</strong></h4>
                             <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
                         </div>
@@ -178,7 +197,7 @@
                 <div class="span4">
                     <div class="service">
                         <div class="support">
-                            <img src="feature_img_3.png" alt="" />
+                            <img src="/images/feature_img_3.png" alt="" />
                             <h4>24/7 LIVE <strong>SUPPORT</strong></h4>
                             <p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
                         </div>
@@ -188,26 +207,27 @@
         </div>
     </div>
 </section>
+</form>
 <section class="our_client">
     <h4 class="title"><span class="text">Manufactures</span></h4>
     <div class="row">
         <div class="span2">
-            <a href="#"><img alt="" src="clients/14.png"></a>
+            <a href="#"><img alt="" src="/images/clients/14.png"></a>
         </div>
         <div class="span2">
-            <a href="#"><img alt="" src="clients/35.png"></a>
+            <a href="#"><img alt="" src="/images/clients/35.png"></a>
         </div>
         <div class="span2">
-            <a href="#"><img alt="" src="clients/1.png"></a>
+            <a href="#"><img alt="" src="/images/clients/1.png"></a>
         </div>
         <div class="span2">
-            <a href="#"><img alt="" src="clients/2.png"></a>
+            <a href="#"><img alt="" src="/images/clients/2.png"></a>
         </div>
         <div class="span2">
-            <a href="#"><img alt="" src="clients/3.png"></a>
+            <a href="#"><img alt="" src="/images/clients/3.png"></a>
         </div>
         <div class="span2">
-            <a href="#"><img alt="" src="clients/4.png"></a>
+            <a href="#"><img alt="" src="/images/clients/4.png"></a>
         </div>
     </div>
 </section>

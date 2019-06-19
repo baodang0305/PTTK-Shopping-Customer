@@ -229,7 +229,7 @@ section#footer-bar .social_icons a {
 	width: 29px;
 	height: 28px;
 	text-indent: -9999px;
-	background-image: url(../images/social-icons.png);
+	background-image: url(/images/social-icons.png);
 	background-repeat: no-repeat;
 	margin-right: 10px;
 	-webkit-transition: all 0.4s;
@@ -425,7 +425,7 @@ section.navbar{
 	border-bottom:1px solid #eee;
 }
 .product-box span.sale_tag {
-	background: url(../images/sprites.png) no-repeat scroll 0 0 transparent;
+	background: url(/images/sprites.png) no-repeat scroll 0 0 transparent;
 	height: 54px;
 	position: absolute;
 	width: 55px;
