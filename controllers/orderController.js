@@ -43,12 +43,14 @@ exports.add_checkout = async(req, res)=>{
             }
             arrProduct.push(pro);
         });
+        console.log(req.body.Date);
         const order = new orderModel({
             Username: req.user.Username,
             ReceiverName: req.body.Name,
             ReceiverAddress: req.body.Address,
             ReceiverPhonenumber: req.body.Phonenumber,
             Sum: cart.Total,
+            Date: req.body.Date,
             Product: arrProduct,
             DeliveryStatus: 'Chưa giao',
         })

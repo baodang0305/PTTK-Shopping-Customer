@@ -30,7 +30,7 @@
                                 <td><button class="fa fa-close fa-1x" type="submit"></button></td>
                             </form>
                             <form action="/cart/product-cart-update={{this.Id}}" method="POST">
-                            <td><a href="/product/product-detail={{this._id}}"><img alt="" src="https://pttk-shopping-web-admin.herokuapp.com/{{this.Image}}"></a></td>
+                            <td><a href="/product/product-detail={{this._id}}"><img alt="" src="https://pttk-shopping-web-admin.herokuapp.com/images/{{this.Image}}"></a></td>
                             <td>{{this.Name}}</td>
                             <td><input type="text" class="input-mini" value="{{this.Amount}}" name="Amount"></td>
                             <td>${{this.Cost}}</td>

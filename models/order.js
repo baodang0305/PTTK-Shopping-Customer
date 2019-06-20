@@ -14,6 +14,7 @@ const orderSchema = new Schema({
         Cost: Number,
         SubTotal: Number
     }],
+    Date: Date,
     DeliveryStatus: String,
 }, {collection: 'Order'});
 
