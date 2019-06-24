@@ -14,7 +14,7 @@ exports.load_list_page = function (req, res) {
         switch(category){
             case "man":  { all = await productModel.find({Gender:'boy'}).limit(LIMIT).skip(offset); break; }
             case "man-shirt": { all = await productModel.find({Gender:'boy', Category: 'shirt'}).limit(LIMIT).skip(offset); break; }
-            case "mant-tshirt": { all = await productModel.find({Gender: 'boy', Category: 'tshirt'}).limit(LIMIT).skip(offset); break; }
+            case "man-tshirt": { all = await productModel.find({Gender: 'boy', Category: 'tshirt'}).limit(LIMIT).skip(offset); break; }
             case "man-jean": { all = await productModel.find({Gender: 'boy', Category: 'jean'}).limit(LIMIT).skip(offset); break; }
             case "women":  { all = await productModel.find({Gender: 'girl'}).limit(LIMIT).skip(offset); break; }
             case "women-shirt": { all = await productModel.find({Gender: 'girl', Category: 'shirt'}).limit(LIMIT).skip(offset); break; }
